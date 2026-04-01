@@ -23,11 +23,12 @@ def transfer_money():
         u_id=int(input("Enter your id : "))
         s_id=int(input("Enter sender id to tansfer money : "))
         money=int(input("Enter amount to transfer : "))
+        customer[u_id]-=money
+        customer[s_id]+=money
+    except KeyError:
+        print("Enter correct ID :)")
     except ValueError:
         print("Enter correct id or money")
-    for s_id in customer.keys():
-        customer[u_id]=customer[u_id]-money
-        customer[s_id]=customer[s_id]+money
     print("Transfered Success :) ")
 def withdraw_money():
     id=int(input("Enter your id : "))
@@ -41,7 +42,7 @@ while True:
 2.View Account Details
 3.Transfer money
 4.Withdraw money
-4.Exit
+5.Exit
 Enter your choice : '''))
     except ValueError:
         print("Enter correct value !")
@@ -54,6 +55,9 @@ Enter your choice : '''))
     elif choice==4:
         withdraw_money()
     elif choice==5:
+        f=open("Data.txt",'a')
+        f.write(str(customer))
+        f.close()
         break
     else:
         pass
