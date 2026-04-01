@@ -56,7 +56,8 @@ Enter your choice : '''))
         withdraw_money()
     elif choice==5:
         f=open("Data.txt",'a')
-        f.write(str(customer))
+        for i,j in customer.items():
+            f.write(f"ID: {i}, Name: {customer_name[i-1]}, Balance: {j}\n")
         f.close()
         break
     else:
